@@ -7,7 +7,7 @@ import './ExpensesFilter.css';
 import './Expenses.css';
 
 const Expenses = ({expenses}) => {
-  const [filterYear, setFilterYear] = useState('2022')
+  const [filterYear, setFilterYear] = useState('2021')
   const filterChangeHandler = (year) => setFilterYear(year);
   const filteredExpenses = expenses.filter(expense =>
     expense.date.getFullYear().toString() === filterYear);
