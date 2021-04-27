@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -27,15 +28,16 @@ function App() {
       amount: 99.83,
       title:  'Laptop Insurance',
     },
-  ]
+  ];
+  const [expenseList, setExpenseList] = useState(expenses)
   const newExpenseHandler = (newExpense) => {
-    console.log({newExpense}, 'newExpense');
+    setExpenseList((prevExpenses) => [newExpense,...prevExpenses]);
   }
   return (
     <div>
       <NewExpense onNewExpense={newExpenseHandler}/>
       <div>
-        <Expenses expenses={expenses}/>
+        <Expenses expenses={expenseList}/>
       </div>
     </div>
   );
